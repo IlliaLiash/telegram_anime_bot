@@ -1,0 +1,18 @@
+service: telegram-bott
+
+plugins:
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+functions:
+  processWebhook:
+    handler: dist/handler.processWebhookOne
+    events:
+      - http:
+          path: /
+          method: post
+
